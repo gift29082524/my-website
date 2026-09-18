@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นิยาย วัยทีน  </title>
+
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Kanit', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #fff9fb;
+            color: #5d5061;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(255, 207, 227, 0.8), rgba(225, 191, 255, 0.8)), 
+                        url('header-bg.jpg') no-repeat center/cover;
+            color: #5d5061;
+            text-align: center;
+            padding: 55px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(225, 191, 255, 0.4);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.2rem;
+            color: #ffffff;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-shadow: 3px 3px 0px #ffb3d1, 5px 5px 15px rgba(93, 80, 97, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        header p {
+            margin: 15px 0 0 0;
+            font-size: 1.15rem;
+            color: #5d5061;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.4);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 20px;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .navbar {
+            height: 65px;
+            background: #bbf1fa;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4a6368;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            color: #4a6368;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .nav-menu a:hover {
+            color: #ff6b9e;
+        }
+
+        .layout {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .sidebar {
+            width: 260px;
+            min-height: calc(100vh - 65px);
+            background: #fff0f5;
+            padding: 30px 20px;
+            position: sticky;
+            top: 65px;
+            border-right: 2px dashed #e1bfff;
+        }
+
+        .sidebar h2 {
+            font-size: 1.4rem;
+            color: #a37ebb;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 12px;
+            border-radius: 15px;
+            color: #5d5061;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .sidebar a:hover,
+        .sidebar a.active {
+            background: #ffcfe3;
+            color: #a37ebb;
+            border: 1px solid #ffb3d1;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .home-hero {
+            background: linear-gradient(135deg, #fff0f7 0%, #f3e9ff 55%, #e9fbff 100%);
+            border: 2px solid #ffffff;
+            border-radius: 28px;
+            padding: 32px 38px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(225,191,255,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .home-hero::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            right: 90px;
+            top: -70px;
+        }
+
+        .home-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 780px;
+        }
+
+        .home-badge {
+            display: inline-block;
+            background: #ffffff;
+            color: #a37ebb;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .home-hero h2 {
+            color: #7f6494;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .home-hero p {
+            color: #6c5e70;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .home-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .home-btn {
+            border: none;
+            border-radius: 15px;
+            padding: 11px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .home-btn.primary {
+            background: #ff8ebb;
+            color: white;
+        }
+
+        .home-btn.secondary {
+            background: white;
+            color: #a37ebb;
+            border: 1px solid #e1bfff;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(163,126,187,0.18);
+        }
+
+        .home-hero-deco {
+            position: relative;
+            z-index: 1;
+            width: 145px;
+            height: 145px;
+            border-radius: 35px;
+            background: rgba(255,255,255,0.72);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 42px;
+            line-height: 1.25;
+            transform: rotate(5deg);
+        }
+
+        .nav-menu a.nav-active {
+            color: #ff5f97;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #a37ebb;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .filter-box {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(225,191,255,0.15);
+            border: 2px solid #fff0f5;
+        }
+
+        .filter-box input,
+        .filter-box select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ffcfe3;
+            border-radius: 12px;
+            font-size: 16px;
+            color: #5d5061;
+            outline: none;
+            background-color: #fff9fb;
+        }
+
+        .filter-box input:focus,
+        .filter-box select:focus {
+            border-color: #ff8ebb;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        article {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #fff0f5;
+            box-shadow: 0 8px 20px rgba(225,191,255,0.2);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative; 
+            overflow: hidden;
+        }
+
+        article:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(255, 207, 227, 0.4);
+        }
+
+        article.promo-item::before {
+            content: "SALE 🔥";
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 35px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+            letter-spacing: 1px;
+        }
+
+        article.promo-item {
+            border: 2px dashed #ff8ebb;
+            background: linear-gradient(to bottom, #ffffff, #fffcfd);
+        }
+
+
+        article.new-item {
+            border: 2px solid #d8c2ff;
+            background: linear-gradient(to bottom, #ffffff, #fcf9ff);
+        }
+
+        article.new-item::before {
+            content: "NEW ✨";
+            position: absolute;
+            top: 15px;
+            left: -35px;
+            background: linear-gradient(135deg, #9b7cff, #c49cff);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 35px;
+            transform: rotate(-45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 10;
+            letter-spacing: 1px;
+        }
+
+        article h3 {
+            color: #a37ebb;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            padding-right: 20px;
+        }
+
+        .tag-category {
+            font-size: 0.85rem;
+            color: #a37ebb;
+            background: #fff0f5;
+            padding: 4px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        article.promo-item .tag-category {
+            background: #ffe3ec;
+            color: #ff416c;
+        }
+
+        article img {
+            width: 180px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto 15px;
+            box-shadow: 3px 5px 15px rgba(93, 80, 97, 0.1);
+        }
+
+        article p.desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #7b6d80;
+            margin-bottom: 12px;
+            flex-grow: 1;
+        }
+
+        .price {
+            color: #ff7597;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .old-price {
+            font-size: 0.95rem;
+            color: #a195a6;
+            text-decoration: line-through;
+            margin-right: 8px;
+            font-weight: normal;
+        }
+
+        .btn-buy {
+            background: linear-gradient(135deg, #ffb3d1, #ff8ebb);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+            padding: 0;
+        }
+
+        .btn-buy a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px;
+            width: 100%;
+        }
+
+        .btn-buy:hover {
+            background: linear-gradient(135deg, #ff8ebb, #ff6b9e);
+        }
+
+        article.promo-item .btn-buy {
+            background: linear-gradient(135deg, #ff6b9e, #ff416c);
+            animation: pulse-glow 2s infinite;
+        }
+        article.promo-item .btn-buy:hover {
+            background: linear-gradient(135deg, #ff416c, #ff1a4a);
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 75, 43, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 75, 43, 0); }
+        }
+
+        footer {
+            background: #ffcfe3;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+            border-radius: 20px 20px 0 0;
+            color: #5d5061;
+        }
+
+        footer h3 {
+            color: #a37ebb;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+        }
+
+        .footer-contact-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            gap: 12px; 
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 320px; 
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            width: 100px; 
+            text-align: left;
+            color: #a37ebb;
+        }
+
+        .contact-value {
+            text-align: left;
+            flex: 1;
+        }
+
+        footer .copyright {
+            font-size: 0.9rem;
+            color: #7b6d80;
+            border-top: 1px dashed rgba(93, 80, 97, 0.2);
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                min-height: auto;
+                position: static;
+                border-right: none;
+                border-bottom: 2px dashed #e1bfff;
+            }
+
+            .sidebar ul {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+                gap: 10px;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .nav-menu a {
+                margin: 0 5px;
+                font-size: 14px;
+            }
+
+            .sidebar ul {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(93, 80, 97, 0.5);
+            backdrop-filter: blur(4px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: white;
+            padding: 35px 30px;
+            border-radius: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(225, 191, 255, 0.3);
+            position: relative;
+            transform: translateY(-20px);
+            transition: 0.3s ease;
+            border: 2px solid #fff0f5;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            color: #a195a6;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover {
+            color: #ff6b9e;
+        }
+
+        .auth-title {
+            color: #a37ebb;
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #7b6d80;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ffcfe3;
+            border-radius: 12px;
+            font-size: 16px;
+            background-color: #fff9fb;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #ff8ebb;
+            box-shadow: 0 0 5px rgba(255, 142, 187, 0.3);
+        }
+
+        .btn-auth {
+            width: 100%;
+            background: linear-gradient(135deg, #ffb3d1, #ff8ebb);
+            border: none;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.2s;
+        }
+
+        .btn-auth:hover {
+            background: linear-gradient(135deg, #ff8ebb, #ff6b9e);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #7b6d80;
+        }
+
+        .auth-switch a {
+            color: #ff6b9e;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-switch a:hover {
+            text-decoration: underline;
+        }
+
+        #logoutBtn {
+            background: #5d5061;
+            color: white !important;
+            padding: 6px 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            margin-left: 25px;
+            transition: 0.2s;
+        }
+        #logoutBtn:hover {
+            background: #ff416c !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>✨ นิยาย วัยทีน   📚</h1>
+        <p>ศูนย์รวมหนังสือนิยายหลากสไตล์ นิยายรัก นิยายแปล แฟนตาซี และวรรณกรรมยอดฮิต</p>
+    </header>
+
+    <nav class="navbar">
+        <div class="logo">🌸 นิยาย วัยทีน </div>
+        <div class="nav-menu">
+            <a href="#" id="homeNav" class="nav-active">หน้าแรก</a>
+            <a href="#" id="newNav">นิยายมาใหม่</a>
+            <a href="#" id="promoNav">โปรโมชั่น</a>
+            <a href="#" id="contactNav">ติดต่อเรา</a>
+            <span id="authSection" style="display: inline-flex; align-items: center;">
+                <a href="#" id="loginBtn">เข้าสู่ระบบ</a>
+                <a href="#" id="registerBtn" style="background: #ff8ebb; color: white; padding: 6px 15px; border-radius: 15px; margin-left: 25px;">สมัครสมาชิก</a>
+            </span>
+        </div>
+    </nav>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+            <h2>หมวดหมู่นิยาย</h2>
+            <ul>
+                <li><a href="#" class="side-link active" data-category="all">🏠 ทั้งหมด</a></li>
+                <li><a href="#" class="side-link" data-category="นิยายรัก">💖 นิยายรัก</a></li>
+                <li><a href="#" class="side-link" data-category="แฟนตาซี">🔮 แฟนตาซี</a></li>
+                <li><a href="#" class="side-link" data-category="สืบสวนสอบสวน">🔍 สืบสวนสอบสวน</a></li>
+                <li><a href="#" class="side-link" data-category="แนวต่างโลก">🎮 แนวต่างโลก</a></li>
+                <li><a href="#" class="side-link" data-category="โปรโมชั่น">🔥 โปรโมชั่น</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+            <section class="home-hero" id="homeHero">
+                <div class="home-hero-content">
+                    <span class="home-badge">🌸 ยินดีต้อนรับ</span>
+                    <h2>โลกของนิยายที่รอให้คุณค้นพบ</h2>
+                    <p>เลือกเรื่องโปรดของคุณจากนิยายรัก แฟนตาซี สืบสวน และเรื่องราวหลากหลายสไตล์</p>
+                    <div class="home-actions">
+                        <button type="button" id="browseAllBtn" class="home-btn primary">📚 ดูนิยายทั้งหมด</button>
+                        <button type="button" id="browseNewBtn" class="home-btn secondary">✨ นิยายมาใหม่</button>
+                    </div>
+                </div>
+                <div class="home-hero-deco">📖<br>💗✨</div>
+            </section>
+
+            <h2 class="section-title">นิยายแนะนำห้ามพลาด</h2>
+
+            <div class="filter-box">
+                <input type="text" id="searchInput" placeholder="พิมพ์ค้นหาชื่อนิยายที่ต้องการ...">
+
+                <select id="categoryFilter">
+                    <option value="all">แสดงหมวดหมู่ทั้งหมด</option>
+                    <option value="นิยายรัก">นิยายรัก</option>
+                    <option value="แฟนตาซี">แฟนตาซี</option>
+                    <option value="สืบสวนสอบสวน">สืบสวนสอบสวน</option>
+                    <option value="แนวต่างโลก">แนวต่างโลก</option>
+                    <option value="โปรโมชั่น">โปรโมชั่น</option>
+                </select>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+
+                <article data-name="ดั่งดาวโอบใจ" data-category="นิยายรัก">
+                    <h3>ดั่งดาวโอบใจ</h3>
+                    <span class="tag-category">หมวดหมู่: นิยายรัก</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc.jpg" alt="">
+                    <p class="desc">เรื่องราวความรักความผูกพันที่ละมุนอุ่นหัวใจดั่งแสงดาวโอบกอด</p>
+                    <p class="price">295 บาท</p>
+                    <button class="btn-buy"><a href="ดั่งดาวโอบใจ.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="บัลลังก์เวทมนตร์" data-category="แฟนตาซี">
+                    <h3>บัลลังก์เวทมนตร์</h3>
+                    <span class="tag-category">หมวดหมู่: แฟนตาซี</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bcc.jpg" alt="">
+                    <p class="desc">การเดินทางของเด็กหนุ่มผู้ครองพลังวิเศษพลิกชะตากรรมโลก</p>
+                    <p class="price">350 บาท</p>
+                    <button class="btn-buy"><a href="บัลลังก์เวทมนตร์.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="คดีลับในสายหมอก" data-category="สืบสวนสอบสวน">
+                    <h3>คดีลับในสายหมอก</h3>
+                    <span class="tag-category">หมวดหมู่: สืบสวนสอบสวน</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc03.jpg" alt="">
+                    <p class="desc">ร่วมไขปริศนาคดีฆาตกรรมต่อเนื่องในเมืองที่เต็มไปด้วยความลับ</p>
+                    <p class="price">289 บาท</p>
+                    <button class="btn-buy"><a href="read-intro.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="สูตรรักฉบับขนมหวาน" data-category="นิยายรัก">
+                    <h3>สูตรรักฉบับขนมหวาน</h3>
+                    <span class="tag-category">หมวดหมู่: นิยายรัก</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc04.jpg" alt="">
+                    <p class="desc">เมื่อเชฟขนมหวานสุดเปิ่นต้องมาทำงานร่วมกับประธานบริษัทสุดเฮี้ยบ</p>
+                    <p class="price">260 บาท</p>
+                    <button class="btn-buy"><a href="สูตรรักฉบับขนมหวาน4(บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="เกิดใหม่เป็นเจ้าหญิงนิทรา" data-category="แฟนตาซี">
+                    <h3>เกิดใหม่เป็นเจ้าหญิงนิทรา</h3>
+                    <span class="tag-category">หมวดหมู่: แฟนตาซี</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc05.jpg" alt="">
+                    <p class="desc">ลืมตาตื่นขึ้นมาอีกทีในร่างเจ้าหญิง แต่อยากนอนต่อทำไมมันยากจัง!</p>
+                    <p class="price">320 บาท</p>
+                    <button class="btn-buy"><a href="เกิดใหม่เป็นเจ้าหญิงนิทรา5(บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="รหัสลับข้ามมิติ" data-category="สืบสวนสอบสวน">
+                    <h3>รหัสลับข้ามมิติ</h3>
+                    <span class="tag-category">หมวดหมู่: สืบสวนสอบสวน</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc06.jpg" alt="">
+                    <p class="desc">ข้อความปริศนาจากอนาคตที่ส่งผ่านวิทยุเครื่องเก่าในคืนวันฝนตก</p>
+                    <p class="price">290 บาท</p>
+                    <button class="btn-buy"><a href="รหัสลับข้ามมิติ6.html(บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="ฤดูร้อนที่มีเธอ" data-category="นิยายรัก">
+                    <h3>ฤดูร้อนที่มีเธอ</h3>
+                    <span class="tag-category">หมวดหมู่: นิยายรัก</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc07.jpg" alt="">
+                    <p class="desc">ความทรงจำและคำสัญญาในฤดูร้อนสุดท้ายก่อนพวกเราจะแยกย้าย</p>
+                    <p class="price">245 บาท</p>
+                    <button class="btn-buy"><a href="ฤดูร้อนที่มีเธอ7.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="ทะลุโลกเกมออนไลน์" data-category="แนวต่างโลก">
+                    <h3>ทะลุโลกเกมออนไลน์</h3>
+                    <span class="tag-category">หมวดหมู่: เกมออนไลน์</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc08.jpg" alt="">
+                    <p class="desc">เมื่อระบบเกิดบั๊กขังผู้เล่นนับแสนเอาไว้ ชัยชนะเท่านั้นคือทางรอด</p>
+                    <p class="price">340 บาท</p>
+                    <button class="btn-buy"><a href="ทะลุโลกเกมออนไลน์8.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="ร้านกาแฟของใจ" data-category="สืบสวนสอบสวน">
+                    <h3>ร้านกาแฟของใจ</h3>
+                    <span class="tag-category">หมวดหมู่: สืบสวนสอบสวน</span>
+                    <img src="e3ee5827-334c-4b38-a9ce-cfc257fca3bc09.jpg" alt="">
+                    <p class="desc">คาเฟ่ลึกลับที่จะเปิดต้อนรับเฉพาะผู้ที่มีเรื่องทุกข์ใจในคืนเดือนดับ</p>
+                    <p class="price">275 บาท</p>
+                    <button class="btn-buy"><a href="ร้านกาแฟของใจ 9.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article data-name="จดหมายจากฤดูฝน" data-category="นิยายรัก">
+                    <h3>จดหมายจากฤดูฝน</h3>
+                    <span class="tag-category">หมวดหมู่: นิยายรัก</span>
+                    <img src="f3f8117b-7a9a-4cfd-80b5-4e598760fd3b10.png" alt="">
+                    <p class="desc">"ลลิน" หญิงสาวที่เพิ่งย้ายกลับบ้านเกิด ได้พบกล่องจดหมายเก่าในห้อง</p>
+                    <p class="price">280 บาท</p>
+                    <button class="btn-buy"><a href="จดหมายฤดูฝน10.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                
+                <article class="new-item" data-name="เงารักใต้แสงจันทร์" data-category="นิยายรัก" data-new="true">
+                    <h3>เงารักใต้แสงจันทร์</h3>
+                    <span class="tag-category">✨ นิยายมาใหม่ • นิยายรัก</span>
+                    <img src="เงารักใต้แสงจันทร์.jpg" alt="เงารักใต้แสงจันทร์">
+                    <p class="desc">เมื่อหญิงสาวผู้ไม่เชื่อในความรัก ต้องกลับมาพบกับชายหนุ่มจากอดีตที่เธอพยายามลืม</p>
+                    <p class="price">299 บาท</p>
+                    <button class="btn-buy"><a href="เงารักใต้แสงจันทร์11.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article class="new-item" data-name="คำสัญญาในวันฝนพรำ" data-category="นิยายรัก" data-new="true">
+                    <h3>คำสัญญาในวันฝนพรำ</h3>
+                    <span class="tag-category">✨ นิยายมาใหม่ • นิยายรัก</span>
+                    <img src="คำสัญญาในวันฝนพรำ.jpg" alt="คำสัญญาในวันฝนพรำ">
+                    <p class="desc">คำสัญญาที่เคยให้ไว้ในวันที่ฝนตก กลายเป็นจุดเริ่มต้นของการกลับมาพบกันอีกครั้ง</p>
+                    <p class="price">315 บาท</p>
+                    <button class="btn-buy"><a href="คำสัญญาในวันฝนพรำ12.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article class="new-item" data-name="บันทึกจากเมืองต้องมนตร์" data-category="แฟนตาซี" data-new="true">
+                    <h3>บันทึกจากเมืองต้องมนตร์</h3>
+                    <span class="tag-category">✨ นิยายมาใหม่ • แฟนตาซี</span>
+                    <img src="บันทึกจากเมืองต้องมน.jpg" alt="บันทึกจากเมืองต้องมนตร์">
+                    <p class="desc">เด็กสาวธรรมดาตื่นขึ้นในเมืองลึกลับที่ทุกคนมีเวทมนตร์ และเธอคือคนเดียวที่ไม่มีพลัง</p>
+                    <p class="price">335 บาท</p>
+                    <button class="btn-buy"><a href="บันทึกจากเมืองต้องมนตร์13.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article class="promo-item" data-name="ดาวตกที่ปลายทะเล" data-category="โปรโมชั่น">
+                    <h3>ดาวตกที่ปลายทะเล</h3>
+                    <span class="tag-category">หมวดหมู่: โปรโมชั่น</span>
+                    <img src="f3f8117b-7a9a-4cfd-80b5-4e598760fd3b11.png" alt="">
+                    <p class="desc">เด็กสาวที่กำลังสับสนกับอนาคต ได้พบกับหนุ่มนักถ่ายภาพ</p>
+                    <p class="price"><span class="old-price">350 บาท</span>280 บาท</p>
+                    <button class="btn-buy"><a href="ดาวตกที่ปลายทะเล14.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+                <article class="promo-item" data-name="ห้องสมุดแห่งความทรงจำ" data-category="โปรโมชั่น">
+                    <h3>ห้องสมุดแห่งความทรงจำ</h3>
+                    <span class="tag-category">หมวดหมู่: โปรโมชั่น</span>
+                    <img src="f3f8117b-7a9a-4cfd-80b5-4e598760fd3b12.png" alt="">
+                    <p class="desc">ในเมืองเล็ก ๆ แห่งหนึ่ง มีห้องสมุดลับซ่อนอยู่ หนังสือทุกเล่มจะซ่อนงำอดีตเอาไว้</p>
+                    <p class="price"><span class="old-price">340 บาท</span>280 บาท</p>
+                    <button class="btn-buy"><a href="ห้องสมุดแห่งความทรงจำ15.html (บทนำ).html" target="_blank">สั่งซื้อหนังสือ</a></button>
+                </article>
+
+            </div>
+        </main>
+    </div>
+
+    <div id="authModal" class="modal-overlay">
+        <div class="modal-box">
+            <span class="close-modal" id="closeModalBtn">&times;</span>
+            
+            <div id="loginFormContainer">
+                <h2 class="auth-title">🔒 เข้าสู่ระบบ</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>อีเมล หรือ ชื่อผู้ใช้</label>
+                        <input type="text" id="loginUser" required placeholder="example@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label>รหัสผ่าน</label>
+                        <input type="password" id="loginPassword" required placeholder="กรอกรหัสผ่าน">
+                    </div>
+                    <button type="submit" class="btn-auth">เข้าสู่ระบบ</button>
+                </form>
+                <p class="auth-switch">ยังไม่มีบัญชีผู้ใช้? <a href="#" id="switchToRegister">สมัครสมาชิกที่นี่</a></p>
+            </div>
+
+            <div id="registerFormContainer" style="display: none;">
+                <h2 class="auth-title">✨ สมัครสมาชิกใหม่</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label>ชื่อผู้ใช้</label>
+                        <input type="text" id="regUsername" required placeholder="ภาษาอังกฤษหรือตัวเลข">
+                    </div>
+                    <div class="input-group">
+                        <label>อีเมล</label>
+                        <input type="email" id="regEmail" required placeholder="example@email.com">
+                    </div>
+                    <div class="input-group">
+                        <label>รหัสผ่าน</label>
+                        <input type="password" id="regPassword" required placeholder="อย่างน้อย 6 ตัวอักษร">
+                    </div>
+                    <div class="input-group">
+                        <label>ยืนยันรหัสผ่าน</label>
+                        <input type="password" id="regConfirmPassword" required placeholder="กรอกรหัสผ่านอีกครั้ง">
+                    </div>
+                    <button type="submit" class="btn-auth">สร้างบัญชีผู้ใช้</button>
+                </form>
+                <p class="auth-switch">มีบัญชีอยู่แล้ว? <a href="#" id="switchToLogin">เข้าสู่ระบบที่นี่</a></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+footer {
+    background: linear-gradient(135deg, #ffd9e9 0%, #f8dfff 100%);
+    text-align: center;
+    padding: 42px 24px 24px;
+    margin-top: 50px;
+    border-radius: 28px 28px 0 0;
+    color: #5d5061;
+    box-shadow: 0 -8px 28px rgba(163, 126, 187, 0.10);
+}
+
+footer h3 {
+    color: #9a6fba;
+    margin: 0 0 28px;
+    font-size: 1.45rem;
+    font-weight: 700;
+}
+
+.footer-contact-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    max-width: 900px;
+    margin: 0 auto 28px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    min-height: 76px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.68);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 5px 15px rgba(93, 80, 97, 0.08);
+    transition: 0.2s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 20px rgba(93, 80, 97, 0.12);
+}
+
+.contact-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    margin-right: 12px;
+    border-radius: 12px;
+    background: #f4ddff;
+    font-size: 1.15rem;
+}
+
+.contact-value {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #5d5061;
+    overflow-wrap: anywhere;
+}
+
+footer .copyright {
+    font-size: 0.85rem;
+    color: #7b6d80;
+    border-top: 1px solid rgba(93, 80, 97, 0.12);
+    padding-top: 18px;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+/* ===== รองรับมือถือ ===== */
+@media (max-width: 900px) {
+    .footer-contact-wrapper {
+        grid-template-columns: 1fr;
+        max-width: 560px;
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        padding: 32px 15px 20px;
+    }
+
+    footer h3 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-item {
+        min-height: 68px;
+        padding: 12px 14px;
+    }
+}
+</style>
+
+<footer>
+    <h3>ติดต่อสอบถามเพิ่มเติม</h3>
+
+    <div class="footer-contact-wrapper">
+
+        <div class="contact-item">
+            <span class="contact-label">📞</span>
+            <span class="contact-value">
+                0986867095
+            </span>
+        </div>
+
+        <div class="contact-item">
+            <span class="contact-label">👥</span>
+            <span class="contact-value">
+                นิยาย วัยทีน  
+            </span>
+        </div>
+
+        <div class="contact-item">
+            <span class="contact-label">✉</span>
+            <span class="contact-value">
+                tg050159@gmail.com
+            </span>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 นิยาย วัยทีน  . All Rights Reserved.
+    </p>
+</footer>
+
+    <script>
+        
+        const searchInput = document.getElementById("searchInput");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const products = document.querySelectorAll("article");
+        const sideLinks = document.querySelectorAll(".side-link");
+        const promoNav = document.getElementById("promoNav");
+        const sectionTitle = document.querySelector(".section-title");
+
+        function filterProducts() {
+            const searchText = searchInput.value.toLowerCase();
+            const selectedCategory = categoryFilter.value;
+
+            products.forEach(product => {
+                const name = product.dataset.name.toLowerCase();
+                const category = product.dataset.category;
+
+                const matchName = name.includes(searchText);
+                const matchCategory = selectedCategory === "all" || category === selectedCategory;
+
+                product.style.display = matchName && matchCategory ? "flex" : "none";
+            });
+        }
+
+        searchInput.addEventListener("keyup", filterProducts);
+        categoryFilter.addEventListener("change", filterProducts);
+
+        sideLinks.forEach(link => {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+                sideLinks.forEach(item => item.classList.remove("active"));
+                this.classList.add("active");
+                const category = this.dataset.category;
+                categoryFilter.value = category;
+                searchInput.value = "";
+                sectionTitle.textContent = category === "all"
+                    ? "นิยายแนะนำห้ามพลาด"
+                    : category === "โปรโมชั่น"
+                        ? "🔥 โปรโมชั่นพิเศษ"
+                        : `หมวดหมู่: ${category}`;
+                if (homeHero) homeHero.style.display = category === "all" ? "flex" : "none";
+                setNavActive("");
+                filterProducts();
+            });
+        });
+
+        const homeNav = document.getElementById("homeNav");
+        const contactNav = document.getElementById("contactNav");
+        const homeHero = document.getElementById("homeHero");
+        const browseAllBtn = document.getElementById("browseAllBtn");
+        const browseNewBtn = document.getElementById("browseNewBtn");
+
+        function setNavActive(activeId) {
+            [homeNav, newNav, promoNav, contactNav].forEach(item => {
+                if (item) item.classList.remove("nav-active");
+            });
+            const active = document.getElementById(activeId);
+            if (active) active.classList.add("nav-active");
+        }
+
+        function showHome() {
+            searchInput.value = "";
+            categoryFilter.value = "all";
+            sideLinks.forEach(item => item.classList.remove("active"));
+            const allSideLink = document.querySelector('.side-link[data-category="all"]');
+            if (allSideLink) allSideLink.classList.add("active");
+            sectionTitle.textContent = "นิยายแนะนำห้ามพลาด";
+            if (homeHero) homeHero.style.display = "flex";
+            products.forEach(product => product.style.display = "flex");
+            setNavActive("homeNav");
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        if (homeNav) {
+            homeNav.addEventListener("click", (e) => {
+                e.preventDefault();
+                showHome();
+            });
+        }
+
+        if (browseAllBtn) {
+            browseAllBtn.addEventListener("click", showHome);
+        }
+
+        if (browseNewBtn && newNav) {
+            browseNewBtn.addEventListener("click", () => newNav.click());
+        }
+
+        
+        if (newNav) {
+            newNav.addEventListener("click", (e) => {
+                e.preventDefault();
+                searchInput.value = "";
+                categoryFilter.value = "all";
+                sideLinks.forEach(item => item.classList.remove("active"));
+                sectionTitle.textContent = "✨ นิยายมาใหม่";
+                if (homeHero) homeHero.style.display = "none";
+                products.forEach(product => {
+                    product.style.display = product.dataset.new === "true" ? "flex" : "none";
+                });
+                setNavActive("newNav");
+                document.querySelector(".main-content").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        }
+
+        
+        if (promoNav) {
+            promoNav.addEventListener("click", (e) => {
+                e.preventDefault();
+                searchInput.value = "";
+                categoryFilter.value = "โปรโมชั่น";
+                sideLinks.forEach(item => item.classList.remove("active"));
+                const promoSideLink = document.querySelector('.side-link[data-category="โปรโมชั่น"]');
+                if (promoSideLink) promoSideLink.classList.add("active");
+                sectionTitle.textContent = "🔥 โปรโมชั่นพิเศษ";
+                if (homeHero) homeHero.style.display = "none";
+                filterProducts();
+                setNavActive("promoNav");
+                document.querySelector(".main-content").scrollIntoView({ behavior: "smooth", block: "start" });
+            });
+        }
+
+        if (contactNav) {
+            contactNav.addEventListener("click", (e) => {
+                e.preventDefault();
+                document.querySelector("footer").scrollIntoView({ behavior: "smooth", block: "start" });
+                setNavActive("contactNav");
+            });
+        }
+
+        
+        searchInput.addEventListener("keyup", () => {
+            if (homeHero) homeHero.style.display = "none";
+            setNavActive("");
+        });
+
+        categoryFilter.addEventListener("change", () => {
+            if (homeHero) homeHero.style.display = "none";
+            setNavActive("");
+        });
+
+       
+        const authModal = document.getElementById("authModal");
+        const loginBtn = document.getElementById("loginBtn");
+        const registerBtn = document.getElementById("registerBtn");
+        const closeModalBtn = document.getElementById("closeModalBtn");
+        const loginFormContainer = document.getElementById("loginFormContainer");
+        const registerFormContainer = document.getElementById("registerFormContainer");
+
+        const switchToRegister = document.getElementById("switchToRegister");
+        const switchToLogin = document.getElementById("switchToLogin");
+
+        const loginForm = document.getElementById("loginForm");
+        const registerForm = document.getElementById("registerForm");
+        const authSection = document.getElementById("authSection");
+
+        function openAuthModal(showRegister = false) {
+            if (showRegister) {
+                loginFormContainer.style.display = "none";
+                registerFormContainer.style.display = "block";
+            } else {
+                loginFormContainer.style.display = "block";
+                registerFormContainer.style.display = "none";
+            }
+            authModal.classList.add("active");
+        }
+
+        if (loginBtn) {
+            loginBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                openAuthModal(false);
+            });
+        }
+        if (registerBtn) {
+            registerBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                openAuthModal(true);
+            });
+        }
+
+        closeModalBtn.addEventListener("click", () => authModal.classList.remove("active"));
+        window.addEventListener("click", (e) => {
+            if (e.target === authModal) authModal.classList.remove("active");
+        });
+
+        switchToRegister.addEventListener("click", (e) => {
+            e.preventDefault();
+            loginFormContainer.style.display = "none";
+            registerFormContainer.style.display = "block";
+        });
+
+        switchToLogin.addEventListener("click", (e) => {
+            e.preventDefault();
+            registerFormContainer.style.display = "none";
+            loginFormContainer.style.display = "block";
+        });
+
+        registerForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("regUsername").value.trim();
+            const email = document.getElementById("regEmail").value.trim();
+            const password = document.getElementById("regPassword").value;
+            const confirmPassword = document.getElementById("regConfirmPassword").value;
+
+            if (password.length < 6) {
+                alert("รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษรขึ้นไป");
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert("รหัสผ่านและยืนยันรหัสผ่านไม่ตรงกัน!");
+                return;
+            }
+
+            localStorage.setItem("mockUser", JSON.stringify({ username, email, password }));
+            alert("🎉 สมัครสมาชิกสำเร็จแล้ว! สามารถใช้ข้อมูลนี้เข้าสู่ระบบได้ทันที");
+            registerForm.reset();
+            switchToLogin.click();
+        });
+
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const userInp = document.getElementById("loginUser").value.trim();
+            const passInp = document.getElementById("loginPassword").value;
+            const savedUser = JSON.parse(localStorage.getItem("mockUser"));
+
+            if (savedUser && (userInp === savedUser.username || userInp === savedUser.email) && passInp === savedUser.password) {
+                alert(`👋 ยินดีต้อนรับเข้าสู่ระบบ คุณ ${savedUser.username}!`);
+                localStorage.setItem("isLoggedIn", "true");
+                localStorage.setItem("currentUser", savedUser.username);
+                authModal.classList.remove("active");
+                loginForm.reset();
+                checkLoginStatus();
+            } else {
+                alert("❌ ชื่อผู้ใช้/อีเมล หรือรหัสผ่านไม่ถูกต้อง หรือยังไม่ได้เปิดบัญชี");
+            }
+        });
+
+        function checkLoginStatus() {
+            const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+            const currentUser = localStorage.getItem("currentUser");
+
+            if (isLoggedIn) {
+                authSection.innerHTML = `
+                    <span style="font-weight: bold; color: #4a6368;">👤 ${currentUser}</span>
+                    <a href="#" id="logoutBtn">ออกจากระบบ</a>
+                `;
+                
+                document.getElementById("logoutBtn").addEventListener("click", (e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("isLoggedIn");
+                    localStorage.removeItem("currentUser");
+                    alert("ออกจากระบบเรียบร้อยแล้ว");
+                    location.reload();
+                });
+            }
+        }
+
+        checkLoginStatus();
+    </script>
+
+</body>
+</html>
