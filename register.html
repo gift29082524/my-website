@@ -84,41 +84,39 @@
   </div>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-    // ค่า Config จากโปรเจกต์ Firebase ของคุณ
-    const firebaseConfig = {
-      apiKey: "AIzaSyB0s-3XJDdUK5gcj89DrOcbjhKOk31SpUw",
-      authDomain: "my-website-354ee.firebaseapp.com",
-      projectId: "my-website-354ee",
-      storageBucket: "my-website-354ee.firebasestorage.app",
-      messagingSenderId: "625641837663",
-      appId: "1:625641837663:web:848b96bb186a8a6a9fb7ea",
-      measurementId: "G-8NFXPNWPC8"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyB0s-3XJddUK5gcj89Dr0cbjhK0k31SpUw",
+    authDomain: "my-website-354ee.firebaseapp.com",
+    projectId: "my-website-354ee",
+    storageBucket: "my-website-354ee.firebasestorage.app",
+    messagingSenderId: "625641837663",
+    appId: "1:625641837663:web:848b96bb186a8a6a9fb7ea",
+    measurementId: "G-8NFXPNWPC8"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+  const registerForm = document.querySelector('form');
+  if (registerForm) {
+    registerForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const email = registerForm.querySelector('input[type="email"]').value;
+      const password = registerForm.querySelector('input[type="password"]').value;
 
-      try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        alert('สมัครสมาชิกสำเร็จ! ยินดีต้อนรับครับ');
-        window.location.href = 'index.html';
-      } catch (error) {
-        if (error.code === 'auth/email-already-in-use') {
-          alert('อีเมลนี้ถูกใช้งานไปแล้ว');
-        } else {
-          alert('เกิดข้อผิดพลาด: ' + error.message);
-        }
-      }
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("สมัครสมาชิกสำเร็จ! ยินดีต้อนรับครับ");
+          window.location.href = "index.html";
+        })
+        .catch((error) => {
+          alert("เกิดข้อผิดพลาด: " + error.message);
+        });
     });
-  </script>
+  }
+</script>
 </body>
 </html>
